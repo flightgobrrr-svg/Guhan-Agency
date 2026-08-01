@@ -78,7 +78,7 @@ export default function Home() {
       }}
     >
       <GlassNav
-        brand="GUHAN"
+        brand="GUHAN AEGIS"
         links={NAV_LINKS}
         active={active}
         status="Booking — Q1 2027"
@@ -120,8 +120,9 @@ export default function Home() {
               Real-time 3D for product launches.
             </h1>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "#A9A9B4", maxWidth: "50ch" }}>
-              Guhan is a four-person studio building WebGL product scenes, configurators and launch sites. Draw
-              calls budgeted, textures compressed to WebP, 60fps on a mid-range laptop — measured, not promised.
+              Guhan Aegis is a one-person studio building WebGL product scenes, configurators and launch sites.
+              Draw calls budgeted, textures compressed to WebP, 60fps on a mid-range laptop — measured, not
+              promised.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: -18, flexWrap: "wrap" }}>
               <MagneticButton variant="primary" size="lg" onClick={() => scrollToSection("Contact")}>
@@ -448,10 +449,10 @@ export default function Home() {
               <span style={{ fontSize: 14, color: "#5A5A66" }}>/ month</span>
             </div>
             <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#A9A9B4" }}>
-              Two of us inside your team on a rolling basis. Three-month minimum, 30 days&apos; notice.
+              Me, inside your team on a rolling basis. Three-month minimum, 30 days&apos; notice.
             </p>
             <div style={{ display: "grid", gap: 10, fontSize: 14, lineHeight: 1.5, color: "#CFCFD6" }}>
-              <span>~60 hours a week of build time</span>
+              <span>~25 hours a week of build time</span>
               <span>Your repo, your review process</span>
               <span>Weekly demo, shared Linear board</span>
               <span>Pause once per quarter, no fee</span>
@@ -470,13 +471,13 @@ export default function Home() {
             <div style={{ display: "grid", gap: 32, alignContent: "start" }}>
               <SectionHeading index="05" eyebrow="Contact" title="Tell us what you're building." />
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#A9A9B4", maxWidth: "44ch" }}>
-                We reply in 48 hours with a yes, a no, or a question. A ballpark budget is fine — it tells us which of
+                I reply in 48 hours with a yes, a no, or a question. A ballpark budget is fine — it tells me which of
                 the three engagements to quote.
               </p>
               <div>
-                <SocialLink label="Email" handle="studio@guhan.dev" />
-                <SocialLink label="Instagram" handle="@guhan.studio" />
-                <SocialLink label="LinkedIn" handle="/company/guhan" />
+                <SocialLink label="Email" handle="studio@guhanaegis.dev" />
+                <SocialLink label="Instagram" handle="@guhanaegis" />
+                <SocialLink label="LinkedIn" handle="/company/guhan-aegis" />
               </div>
             </div>
             <div style={{ display: "grid", gap: 16, alignContent: "start" }}>
@@ -517,7 +518,7 @@ export default function Home() {
               color: "#E9E9EE",
             }}
           >
-            GUHAN
+            GUHAN AEGIS
           </span>
           <span>Real-time 3D · Remote, GMT+5:30</span>
           <span>© 2026</span>

@@ -63,6 +63,7 @@ export default function GlassNav({
             fontSize: "var(--step-0)",
             letterSpacing: "0.02em",
             color: "var(--text-strong)",
+            whiteSpace: "nowrap",
           }}
         >
           {brand}

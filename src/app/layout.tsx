@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Guhan — Real-time 3D for product launches",
+  title: "Guhan Aegis — Real-time 3D for product launches",
   description:
-    "Guhan is a four-person studio building WebGL product scenes, configurators and launch sites.",
+    "Guhan Aegis is a one-person studio building WebGL product scenes, configurators and launch sites.",
 };
 
 export default function RootLayout({
