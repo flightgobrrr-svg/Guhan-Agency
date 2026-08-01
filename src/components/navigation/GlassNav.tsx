@@ -55,13 +55,32 @@ export default function GlassNav({
           "background var(--dur-base) var(--ease-out-expo), border-color var(--dur-base) linear, box-shadow var(--dur-base) var(--ease-out-expo)",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-5)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+        <span
+          aria-hidden="true"
+          style={{
+            display: "grid",
+            placeItems: "center",
+            width: "30px",
+            height: "30px",
+            borderRadius: "var(--radius-sm)",
+            background: "var(--grad-gold)",
+            color: "var(--text-on-gold)",
+            fontFamily: "var(--font-display)",
+            fontWeight: "var(--weight-bold)",
+            fontSize: "13px",
+            letterSpacing: "-0.02em",
+            flex: "none",
+          }}
+        >
+          GA
+        </span>
         <span
           style={{
             fontFamily: "var(--font-display)",
             fontWeight: "var(--weight-bold)",
-            fontSize: "var(--step-0)",
-            letterSpacing: "0.02em",
+            fontSize: "var(--step-1)",
+            letterSpacing: "0.01em",
             color: "var(--text-strong)",
             whiteSpace: "nowrap",
           }}
