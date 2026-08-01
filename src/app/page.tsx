@@ -95,50 +95,90 @@ export default function Home() {
         data-screen-label="Hero"
         style={{
           ...wrap,
-          paddingTop: 88,
-          display: "grid",
-          gridTemplateColumns: "minmax(0,1.02fr) minmax(0,1fr)",
-          gap: 56,
-          alignItems: "center",
+          minHeight: "calc(100dvh - 132px)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingTop: 48,
+          paddingBottom: 32,
         }}
       >
-        <div style={{ display: "grid", gap: 30, justifyItems: "start", animation: "ghRise 900ms cubic-bezier(.16,1,.3,1) both" }}>
-          <StatusBadge tone="live">Two build slots — Q1 2027</StatusBadge>
-          <h1
-            style={{
-              margin: 0,
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "clamp(46px,6.4vw,96px)",
-              lineHeight: 0.92,
-              letterSpacing: "-0.045em",
-              color: "#fff",
-            }}
-          >
-            Real-time 3D for product launches.
-          </h1>
-          <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "#A9A9B4", maxWidth: "50ch" }}>
-            Guhan is a four-person studio building WebGL product scenes, configurators and launch sites. Draw calls
-            budgeted, textures compressed to WebP, 60fps on a mid-range laptop — measured, not promised.
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: -18, flexWrap: "wrap" }}>
-            <MagneticButton variant="primary" size="lg" onClick={() => scrollToSection("Contact")}>
-              Start a project
-            </MagneticButton>
-            <Button variant="ghost" size="lg">
-              See the reel — 90s
-            </Button>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0,1.02fr) minmax(0,1fr)",
+            gap: 56,
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div style={{ display: "grid", gap: 30, justifyItems: "start", animation: "ghRise 900ms cubic-bezier(.16,1,.3,1) both" }}>
+            <StatusBadge tone="live">Two build slots — Q1 2027</StatusBadge>
+            <h1
+              style={{
+                margin: 0,
+                fontFamily: "var(--font-display)",
+                fontWeight: 700,
+                fontSize: "clamp(46px,6.4vw,96px)",
+                lineHeight: 0.92,
+                letterSpacing: "-0.045em",
+                color: "#fff",
+              }}
+            >
+              Real-time 3D for product launches.
+            </h1>
+            <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "#A9A9B4", maxWidth: "50ch" }}>
+              Guhan is a four-person studio building WebGL product scenes, configurators and launch sites. Draw
+              calls budgeted, textures compressed to WebP, 60fps on a mid-range laptop — measured, not promised.
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: -18, flexWrap: "wrap" }}>
+              <MagneticButton variant="primary" size="lg" onClick={() => scrollToSection("Contact")}>
+                Start a project
+              </MagneticButton>
+              <Button variant="ghost" size="lg">
+                See the reel — 90s
+              </Button>
+            </div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", paddingTop: 4 }}>
+              <Tag size="sm">WebGL</Tag>
+              <Tag size="sm">Configurators</Tag>
+              <Tag size="sm">Motion UI</Tag>
+              <Tag size="sm">Launch sites</Tag>
+            </div>
           </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", paddingTop: 4 }}>
-            <Tag size="sm">WebGL</Tag>
-            <Tag size="sm">Configurators</Tag>
-            <Tag size="sm">Motion UI</Tag>
-            <Tag size="sm">Launch sites</Tag>
-          </div>
+          <ParallaxScene height="min(74vh, 620px)" depth={10}>
+            <HeroCanvas />
+          </ParallaxScene>
         </div>
-        <ParallaxScene height="min(74vh, 620px)" depth={10}>
-          <HeroCanvas />
-        </ParallaxScene>
+
+        <button
+          type="button"
+          onClick={() => scrollToSection("Stats")}
+          aria-label="Scroll to see more"
+          style={{
+            alignSelf: "center",
+            marginTop: 40,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            display: "grid",
+            justifyItems: "center",
+            gap: 10,
+            padding: 8,
+            color: "var(--text-faint)",
+          }}
+        >
+          <span style={{ ...labelText, textTransform: "uppercase" }}>Scroll</span>
+          <span
+            aria-hidden="true"
+            style={{
+              width: 1,
+              height: 28,
+              background: "linear-gradient(180deg, var(--gold-400), transparent)",
+              animation: "ghFloat 2.2s ease-in-out infinite",
+            }}
+          />
+        </button>
       </section>
 
       {/* Stats */}
