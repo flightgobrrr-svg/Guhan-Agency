@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import Tag from "@/components/core/Tag";
 import { labelText } from "@/lib/textStyles";
 
@@ -9,12 +9,14 @@ interface ProjectCardProps {
   client: string;
   year: string;
   image?: string;
+  /** Custom thumbnail content (e.g. a CSS 3D scene) rendered in place of the image/placeholder. */
+  visual?: ReactNode;
   tags?: string[];
   onClick?: () => void;
 }
 
 /** Portfolio card with 3D tilt, cursor-tracked glow border and tag reveal. */
-export default function ProjectCard({ title, client, year, image, tags = [], onClick }: ProjectCardProps) {
+export default function ProjectCard({ title, client, year, image, visual, tags = [], onClick }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [t, setT] = useState({ rx: 0, ry: 0, mx: 50, my: 50 });
   const [hover, setHover] = useState(false);
@@ -77,6 +79,20 @@ export default function ProjectCard({ title, client, year, image, tags = [], onC
                 transition: "transform var(--dur-slow) var(--ease-out-expo), filter var(--dur-base) linear",
               }}
             />
+          ) : visual ? (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "grid",
+                placeItems: "center",
+                background: "radial-gradient(80% 80% at 50% 38%,rgba(224,166,60,.10),transparent 65%), var(--ink-900)",
+                transform: hover ? "scale(1.04)" : "scale(1)",
+                transition: "transform var(--dur-slow) var(--ease-out-expo)",
+              }}
+            >
+              {visual}
+            </div>
           ) : (
             <div style={{ position: "absolute", inset: 0, background: "var(--grad-chrome)", opacity: 0.35 }} />
           )}

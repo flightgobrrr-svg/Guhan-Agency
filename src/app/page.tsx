@@ -13,6 +13,7 @@ import ParallaxScene from "@/components/motion/ParallaxScene";
 import HeroCanvas from "@/components/motion/HeroCanvas";
 import SectionHeading from "@/components/surfaces/SectionHeading";
 import ProjectCard from "@/components/surfaces/ProjectCard";
+import ProjectVisual from "@/components/surfaces/ProjectVisual";
 import BentoCard from "@/components/surfaces/BentoCard";
 import GlassPanel from "@/components/surfaces/GlassPanel";
 import Input from "@/components/forms/Input";
@@ -22,10 +23,10 @@ import { labelText } from "@/lib/textStyles";
 const NAV_LINKS = ["Work", "Services", "Process", "Pricing", "Contact"];
 
 const PROJECTS = [
-  { title: "Halo Configurator", client: "Nord Audio", year: "2026", tags: ["WebGL", "R3F", "Configurator"] },
-  { title: "Atlas Terminal", client: "Kessler Freight", year: "2025", tags: ["Web App", "Data Viz"] },
-  { title: "Liquid Index", client: "Fold Type Foundry", year: "2025", tags: ["Motion UI", "Next.js"] },
-  { title: "Prism Launch", client: "Aster Labs", year: "2024", tags: ["Three.js", "Campaign"] },
+  { title: "Halo Configurator", client: "Nord Audio", year: "2026", tags: ["WebGL", "R3F", "Configurator"], visual: "halo" as const },
+  { title: "Atlas Terminal", client: "Kessler Freight", year: "2025", tags: ["Web App", "Data Viz"], visual: "terminal" as const },
+  { title: "Liquid Index", client: "Fold Type Foundry", year: "2025", tags: ["Motion UI", "Next.js"], visual: "liquid" as const },
+  { title: "Prism Launch", client: "Aster Labs", year: "2024", tags: ["Three.js", "Campaign"], visual: "prism" as const },
 ];
 
 const PROCESS_STEPS = [
@@ -167,8 +168,8 @@ export default function Home() {
       <section data-screen-label="Work" style={{ ...wrap, paddingTop: 120 }}>
         <SectionHeading index="01" eyebrow="Selected work" title="Things we shipped." />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 24 }}>
-          {PROJECTS.map((p) => (
-            <ProjectCard key={p.title} {...p} />
+          {PROJECTS.map(({ visual, ...p }) => (
+            <ProjectCard key={p.title} {...p} visual={<ProjectVisual variant={visual} />} />
           ))}
         </div>
       </section>
@@ -295,7 +296,7 @@ export default function Home() {
                   color: "#fff",
                 }}
               >
-                $18k
+                ₹2.5L
               </span>
               <span style={{ fontSize: 14, color: "#5A5A66" }}>fixed</span>
             </div>
@@ -354,7 +355,7 @@ export default function Home() {
                   color: "#fff",
                 }}
               >
-                $52k
+                ₹9.5L
               </span>
               <span style={{ fontSize: 14, color: "#82828F" }}>fixed</span>
             </div>
@@ -414,7 +415,7 @@ export default function Home() {
                   color: "#fff",
                 }}
               >
-                $14k
+                ₹3.5L
               </span>
               <span style={{ fontSize: 14, color: "#5A5A66" }}>/ month</span>
             </div>
