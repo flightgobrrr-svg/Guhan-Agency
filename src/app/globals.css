@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+:root {
+  /* fonts */
+  --font-display: var(--font-space-grotesk), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-manrope), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* neutrals (ink) */
+  --ink-1000: #050505;
+  --ink-950: #0a0a0b;
+  --ink-900: #101012;
+  --ink-850: #16161a;
+  --ink-800: #1d1d22;
+  --ink-700: #2a2a31;
+  --ink-600: #3a3a44;
+  --ink-500: #5a5a66;
+  --ink-400: #82828f;
+  --ink-300: #a9a9b4;
+  --ink-200: #cfcfd6;
+  --ink-100: #e9e9ee;
+  --ink-000: #ffffff;
+
+  /* gold accent */
+  --gold-100: #fbefd2;
+  --gold-300: #f3d794;
+  --gold-400: #efc46a;
+  --gold-500: #e0a63c;
+  --gold-600: #c4842a;
+  --gold-700: #96601c;
+  --gold-900: #4a2e0b;
+
+  /* chrome (3D objects only) */
+  --chrome-100: #f2f4f7;
+  --chrome-300: #c6cbd4;
+  --chrome-500: #8d95a3;
+  --chrome-700: #4c525e;
+
+  /* signals */
+  --signal-live: #5ce39c;
+  --signal-warn: #f0b23f;
+  --signal-error: #ff5c48;
+  --signal-info: #6fa8ff;
+
+  /* semantic surfaces */
+  --bg-page: var(--ink-1000);
+  --bg-raised: var(--ink-900);
+  --surface-card: rgba(255, 255, 255, 0.035);
+  --surface-card-hover: rgba(255, 255, 255, 0.06);
+  --surface-glass: rgba(12, 12, 14, 0.62);
+  --surface-inverse: var(--ink-100);
+
+  --text-strong: var(--ink-000);
+  --text-body: var(--ink-300);
+  --text-muted: var(--ink-400);
+  --text-faint: var(--ink-500);
+  --text-on-gold: var(--ink-1000);
+  --text-accent: var(--gold-400);
+
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-gold: rgba(224, 166, 60, 0.45);
+
+  --grad-gold: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 48%, var(--gold-700) 100%);
+  --grad-chrome: linear-gradient(160deg, #ffffff 0%, var(--chrome-300) 35%, var(--chrome-700) 62%, #0d0d0f 100%);
+  --grad-glow-gold: radial-gradient(60% 60% at 50% 40%, rgba(224, 166, 60, 0.35) 0%, rgba(224, 166, 60, 0) 70%);
+  --grad-fade-bottom: linear-gradient(180deg, rgba(5, 5, 5, 0) 0%, var(--ink-1000) 88%);
+
+  /* type scale */
+  --step--2: 0.6875rem;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: 2.75rem;
+  --step-5: 4rem;
+  --step-6: 5.75rem;
+  --step-7: 8.5rem;
+
+  --lh-tight: 0.92;
+  --lh-snug: 1.06;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+
+  --tracking-display: -0.045em;
+  --tracking-heading: -0.03em;
+  --tracking-body: -0.005em;
+  --tracking-label: 0.18em;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 180px;
+  --gutter: 24px;
+  --section-y: var(--space-10);
+  --container-max: 1320px;
+  --container-narrow: 820px;
+
+  /* radius */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --radius-card: var(--radius-lg);
+  --radius-field: var(--radius-pill);
+
+  /* effects */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.75);
+  --shadow-lg: 0 40px 80px -32px rgba(0, 0, 0, 0.85);
+  --shadow-gold: 0 18px 48px -18px rgba(224, 166, 60, 0.55);
+  --shadow-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-inset-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --blur-glass: 18px;
+  --blur-soft: 40px;
+  --glow-ring: 0 0 0 1px rgba(224, 166, 60, 0.35), 0 0 40px -6px rgba(224, 166, 60, 0.45);
+  --noise-opacity: 0.045;
+  --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+  /* motion */
+  --dur-instant: 120ms;
+  --dur-fast: 220ms;
+  --dur-base: 380ms;
+  --dur-slow: 680ms;
+  --dur-reveal: 900ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --stagger-step: 70ms;
+  --reveal-offset: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg-page);
+  color: var(--text-body);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--gold-400);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--gold-300);
+}
+
+@media (pointer: fine) {
+  body,
+  body * {
+    cursor: none !important;
+  }
+  input,
+  textarea,
+  select {
+    cursor: text !important;
+  }
+}
+
+@keyframes ghFloat {
+  0%,
+  100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes ghRise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes dsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dsPulse {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes dsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dsFloat {
+  0%,
+  100% {
+    translate: 0 -10px;
+  }
+  50% {
+    translate: 0 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.15s !important;
+    transition-duration: 0.15s !important;
+  }
+}
