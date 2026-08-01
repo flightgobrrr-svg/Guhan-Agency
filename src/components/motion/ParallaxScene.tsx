@@ -7,11 +7,12 @@ interface ParallaxSceneProps {
   height?: string;
   depth?: number;
   loading?: boolean;
+  className?: string;
   /** Custom content to render in place of the default chrome blob (e.g. the WebGL hero canvas). */
   children?: ReactNode;
 }
 
-export default function ParallaxScene({ height = "min(72vh, 620px)", depth = 18, loading = false, children }: ParallaxSceneProps) {
+export default function ParallaxScene({ height = "min(72vh, 620px)", depth = 18, loading = false, className, children }: ParallaxSceneProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [p, setP] = useState({ x: 0, y: 0 });
 
@@ -26,6 +27,7 @@ export default function ParallaxScene({ height = "min(72vh, 620px)", depth = 18,
   return (
     <div
       ref={ref}
+      className={className}
       onMouseMove={move}
       onMouseLeave={() => setP({ x: 0, y: 0 })}
       style={{

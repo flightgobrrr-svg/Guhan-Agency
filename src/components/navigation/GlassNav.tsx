@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MagneticButton from "@/components/core/MagneticButton";
+import Button from "@/components/core/Button";
 import StatusBadge from "@/components/core/StatusBadge";
 
 interface GlassNavProps {
@@ -24,6 +25,7 @@ export default function GlassNav({
   onCta,
 }: GlassNavProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
@@ -45,8 +47,8 @@ export default function GlassNav({
         width: "min(100% - 32px, var(--container-max))",
         padding: "10px 10px 10px var(--space-5)",
         borderRadius: "var(--radius-pill)",
-        background: scrolled ? "rgba(10,10,11,.78)" : "rgba(255,255,255,.04)",
-        border: `1px solid ${scrolled ? "var(--border-strong)" : "var(--border-hairline)"}`,
+        background: scrolled || open ? "rgba(10,10,11,.78)" : "rgba(255,255,255,.04)",
+        border: `1px solid ${scrolled || open ? "var(--border-strong)" : "var(--border-hairline)"}`,
         backdropFilter: "blur(var(--blur-glass)) saturate(160%)",
         boxShadow: scrolled ? "var(--shadow-md)" : "var(--shadow-inset-top)",
         transition:
@@ -65,10 +67,13 @@ export default function GlassNav({
         >
           {brand}
         </span>
-        <span style={{ width: "1px", height: "18px", background: "var(--border-hairline)" }} />
-        <StatusBadge tone="live">{status}</StatusBadge>
+        <span className="gn-status" style={{ display: "flex", alignItems: "center", gap: "var(--space-5)" }}>
+          <span style={{ width: "1px", height: "18px", background: "var(--border-hairline)" }} />
+          <StatusBadge tone="live">{status}</StatusBadge>
+        </span>
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+
+      <div className="gn-links">
         {links.map((l) => {
           const on = l === active;
           return (
@@ -99,6 +104,98 @@ export default function GlassNav({
           </MagneticButton>
         </span>
       </div>
+
+      <button
+        type="button"
+        className="gn-burger"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          padding: "10px",
+          display: "none",
+          flexDirection: "column",
+          gap: "5px",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <span
+          style={{
+            width: "20px",
+            height: "1.5px",
+            background: "var(--text-strong)",
+            transition: "transform var(--dur-fast) var(--ease-out-expo), opacity var(--dur-fast) linear",
+            transform: open ? "translateY(3.25px) rotate(45deg)" : "none",
+          }}
+        />
+        <span
+          style={{
+            width: "20px",
+            height: "1.5px",
+            background: "var(--text-strong)",
+            transition: "transform var(--dur-fast) var(--ease-out-expo), opacity var(--dur-fast) linear",
+            opacity: open ? 0 : 1,
+          }}
+        />
+        <span
+          style={{
+            width: "20px",
+            height: "1.5px",
+            background: "var(--text-strong)",
+            transition: "transform var(--dur-fast) var(--ease-out-expo), opacity var(--dur-fast) linear",
+            transform: open ? "translateY(-3.25px) rotate(-45deg)" : "none",
+          }}
+        />
+      </button>
+
+      {open ? (
+        <div className="gn-mobile-panel">
+          {links.map((l) => {
+            const on = l === active;
+            return (
+              <button
+                key={l}
+                type="button"
+                onClick={() => {
+                  onNavigate?.(l);
+                  setOpen(false);
+                }}
+                style={{
+                  padding: "13px 16px",
+                  borderRadius: "var(--radius-md)",
+                  border: "none",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  background: on ? "rgba(255,255,255,.07)" : "transparent",
+                  color: on ? "var(--text-strong)" : "var(--text-muted)",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "var(--step-0)",
+                  fontWeight: "var(--weight-medium)",
+                }}
+              >
+                {l}
+              </button>
+            );
+          })}
+          <div style={{ paddingTop: "8px" }}>
+            <Button
+              variant="primary"
+              size="md"
+              full
+              onClick={() => {
+                onCta?.();
+                setOpen(false);
+              }}
+            >
+              {cta}
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </nav>
   );
 }

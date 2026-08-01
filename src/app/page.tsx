@@ -93,9 +93,9 @@ export default function Home() {
       {/* Hero */}
       <section
         data-screen-label="Hero"
+        className="hero-section"
         style={{
           ...wrap,
-          minHeight: "calc(100dvh - 132px)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -103,15 +103,7 @@ export default function Home() {
           paddingBottom: 32,
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0,1.02fr) minmax(0,1fr)",
-            gap: 56,
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
+        <div className="hero-grid">
           <div style={{ display: "grid", gap: 30, justifyItems: "start", animation: "ghRise 900ms cubic-bezier(.16,1,.3,1) both" }}>
             <StatusBadge tone="live">Two build slots — Q1 2027</StatusBadge>
             <h1
@@ -119,8 +111,8 @@ export default function Home() {
                 margin: 0,
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                fontSize: "clamp(46px,6.4vw,96px)",
-                lineHeight: 0.92,
+                fontSize: "clamp(40px,6.4vw,96px)",
+                lineHeight: 0.98,
                 letterSpacing: "-0.045em",
                 color: "#fff",
               }}
@@ -146,7 +138,7 @@ export default function Home() {
               <Tag size="sm">Launch sites</Tag>
             </div>
           </div>
-          <ParallaxScene height="min(74vh, 620px)" depth={10}>
+          <ParallaxScene className="hero-canvas" height="min(74vh, 620px)" depth={10}>
             <HeroCanvas />
           </ParallaxScene>
         </div>
@@ -184,13 +176,11 @@ export default function Home() {
       {/* Stats */}
       <section
         data-screen-label="Stats"
+        className="stats-grid"
         style={{
           ...wrap,
           margin: "96px auto 0",
           paddingTop: 64,
-          display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
-          gap: 32,
           borderTop: "1px solid rgba(255,255,255,.08)",
         }}
       >
@@ -207,7 +197,7 @@ export default function Home() {
       {/* Work */}
       <section data-screen-label="Work" style={{ ...wrap, paddingTop: 120 }}>
         <SectionHeading index="01" eyebrow="Selected work" title="Things we shipped." />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 24 }}>
+        <div className="work-grid">
           {PROJECTS.map(({ visual, ...p }) => (
             <ProjectCard key={p.title} {...p} visual={<ProjectVisual variant={visual} />} />
           ))}
@@ -217,7 +207,7 @@ export default function Home() {
       {/* Services */}
       <section data-screen-label="Services" style={{ ...wrap, paddingTop: 128 }}>
         <SectionHeading index="02" eyebrow="Capabilities" title="Four things, done properly." />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+        <div className="services-grid">
           <BentoCard
             span={2}
             eyebrow="01"
@@ -249,12 +239,8 @@ export default function Home() {
           {PROCESS_STEPS.map((s) => (
             <div
               key={s.step}
+              className="process-row"
               style={{
-                display: "grid",
-                gridTemplateColumns: "96px minmax(0,1fr) minmax(0,1.1fr) 120px",
-                gap: 24,
-                alignItems: "baseline",
-                padding: "28px 12px",
                 borderBottom: "1px solid rgba(255,255,255,.08)",
                 transition:
                   "background 320ms cubic-bezier(.16,1,.3,1), transform 320ms cubic-bezier(.16,1,.3,1), padding 320ms cubic-bezier(.16,1,.3,1)",
@@ -285,7 +271,9 @@ export default function Home() {
                 {s.title}
               </h3>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#A9A9B4" }}>{s.body}</p>
-              <span style={{ ...labelText, color: "#5A5A66", textAlign: "right" }}>{s.week}</span>
+              <span className="process-week" style={{ ...labelText, color: "#5A5A66", textAlign: "right" }}>
+                {s.week}
+              </span>
             </div>
           ))}
         </div>
@@ -294,7 +282,7 @@ export default function Home() {
       {/* Pricing */}
       <section data-screen-label="Pricing" style={{ ...wrap, paddingTop: 128 }}>
         <SectionHeading index="04" eyebrow="Engagements" title="Three ways to work with us." />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+        <div className="pricing-grid">
           {/* Single Scene */}
           <div
             style={{
@@ -478,7 +466,7 @@ export default function Home() {
       {/* Contact */}
       <section data-screen-label="Contact" style={{ ...wrap, padding: "128px 0 96px" }}>
         <GlassPanel glow padding="clamp(24px, 4vw, 96px)">
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 64 }}>
+          <div className="contact-grid">
             <div style={{ display: "grid", gap: 32, alignContent: "start" }}>
               <SectionHeading index="05" eyebrow="Contact" title="Tell us what you're building." />
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: "#A9A9B4", maxWidth: "44ch" }}>
