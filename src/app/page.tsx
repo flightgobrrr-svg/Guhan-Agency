@@ -105,6 +105,7 @@ export default function Home() {
       >
         <div className="hero-grid">
           <div style={{ display: "grid", gap: 30, justifyItems: "start", animation: "ghRise 900ms cubic-bezier(.16,1,.3,1) both" }}>
+            <span style={{ ...labelText, color: "var(--gold-400)", textTransform: "uppercase" }}>Guhan Aegis</span>
             <StatusBadge tone="live">Two build slots — Q1 2027</StatusBadge>
             <h1
               style={{
